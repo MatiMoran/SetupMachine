@@ -1,14 +1,12 @@
-- name: Install packages
+- name: Install dotnet
   become: true
   apt:
-    name: [ "dotnet-sdk-6.0"]
+    name: [ "dotnet-sdk-6.0" ]
   tags:
     - install
     - dotnet
-
-
-
-    dotnet tool install --global dotnet-ef
-    add path to $HOME/.dotnet/tools
-    install azure data studio
-    postman
+- name: Install Entity Framework Core
+  ansible.builtin.command: dotnet tool install --global dotnet-ef
+  tags:
+    - install
+    - dotnet
