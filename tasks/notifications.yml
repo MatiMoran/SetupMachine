@@ -1,4 +1,4 @@
-- name: Install packages
+- name: Install notification packages
   become: true
   apt:
     name: [ "sox", "dunst"]
