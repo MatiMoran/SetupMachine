@@ -29,7 +29,7 @@
 - name: Install System Packages 3
   become: true
   apt:
-    name: [ "rofi" ]
+    name: [ "rofi" , "feh"]
   tags:
     - install
     - core
