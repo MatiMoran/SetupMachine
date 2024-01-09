@@ -22,7 +22,7 @@
   become: true
   apt:
     # name: [ "wireshark", "kdenlive"]
-    name: [ "tmux", "fzf", "gimp", "xclip", "tldr", "ripgrep", "shutter", "rofi" , "vlc", "keepass2", "redshift", "fd-find"]
+    name: [ "tmux", "gimp", "xclip", "tldr", "ripgrep", "shutter", "rofi" , "vlc", "keepass2", "redshift", "fd-find"]
   tags:
     - install
     - productivity
