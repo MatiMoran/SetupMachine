@@ -1,0 +1,8 @@
+- name: Move qbittorrent to binaries path
+  become: true
+  ansible.builtin.copy:
+    src: "{{ qbittorrent_source_bin }}"
+    dest: "/usr/local/bin"
+  tags:
+    - install
+    - qbittorrent

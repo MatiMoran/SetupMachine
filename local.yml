@@ -5,6 +5,7 @@
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/{{key_name}}"
     alacritty_source_bin: "{{ lookup('env', 'HOME') }}/.cargo/bin/alacritty"
     fzf_source_bin: "./software/fzf/fzf"
+    qbittorrent_source_bin: "./software/qbittorrent/qbittorrent"
   pre_tasks:
   - name: Update Apt
     become: true
@@ -24,3 +25,4 @@
     - import_tasks: tasks/notifications.yml
     - import_tasks: tasks/alacritty.yml
     - import_tasks: tasks/fzf.yml
+    - import_tasks: tasks/qbittorrent.yml
