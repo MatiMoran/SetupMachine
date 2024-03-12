@@ -1,3 +1,6 @@
+# read the doc to add microsoft repos to ppa in debian
+# https://learn.microsoft.com/es-es/dotnet/core/install/linux-debian
+#
 - name: Install dotnet
   become: true
   apt:
