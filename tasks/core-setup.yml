@@ -1,7 +1,7 @@
 - name: Install System Packages 1
   become: true
   apt:
-    name: [ "unzip", "gettext", "ninja-build", "cmake", "curl", "build-essential", "unzip"]
+    name: [ "unzip", "zip", "gettext", "ninja-build", "cmake", "curl", "build-essential"]
   tags:
     - install
     - neovim
@@ -24,6 +24,14 @@
     - install
     - core
 
+- name: Install System Packages 4
+  become: true
+  apt:
+    name: [ "autoconf", "gcc", "make", "pkg-config", "libpam0g-dev", "libcairo2-dev", "libfontconfig1-dev", "libxcb-composite0-dev", "libev-dev", "libx11-xcb-dev", "libxcb-xkb-dev", "libxcb-xinerama0-dev", "libxcb-randr0-dev", "libxcb-image0-dev", "libxcb-util0-dev", "libxcb-xrm-dev", "libxkbcommon-dev", "libxkbcommon-x11-dev", "libjpeg-dev" ]
+  tags:
+    - install
+    - core
+      
 # - name: Install Clang
 #   become: true
 #   apt:
