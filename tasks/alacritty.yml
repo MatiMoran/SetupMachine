@@ -31,7 +31,7 @@
 - name: Move alacritty to binaries path
   become: true
   ansible.builtin.copy:
-    src: "{{ alacritty_source_bin }}"
+    src: "{{ env_alacritty_source_bin }}"
     dest: "/usr/local/bin"
   tags:
     - install
