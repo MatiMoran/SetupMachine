@@ -17,7 +17,7 @@
     - 'productivity'
     - 'zsh'
 
-- name: Check that the somefile.conf exists
+- name: Check that the path exists
   stat:
     path: /home/matias/.oh-my-zsh
   register: oh_my_stats
@@ -31,6 +31,16 @@
   shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   when: oh_my_stats.stat.exists == False
   become_user: matias
+  tags: 
+    - 'dotfiles'
+    - 'install'
+    - 'productivity'
+    - 'zsh'
+
+- name: Install zsh-autocompletions
+  ansible.builtin.git:
+    repo: 'https://github.com/zsh-users/zsh-completions.git'
+    dest: "~/.oh-my-zsh/plugins/zsh-completions"
   tags: 
     - 'dotfiles'
     - 'install'
@@ -56,3 +66,4 @@
     - 'install'
     - 'productivity'
     - 'zsh'
+
