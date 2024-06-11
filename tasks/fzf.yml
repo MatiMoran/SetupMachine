@@ -1,8 +1,0 @@
-- name: Move fzf to binaries path
-  become: true
-  ansible.builtin.copy:
-    src: "{{ env_fzf_source_bin }}"
-    dest: "{{env_home_path}}/.local/bin"
-  tags:
-    - install
-    - fzf
