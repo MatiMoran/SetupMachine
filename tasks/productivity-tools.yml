@@ -31,7 +31,7 @@
 - name: Install packages 2
   become: true
   apt:
-    name: ["gimp", "xclip", "tldr", "shutter", "rofi" , "vlc", "keepass2", "redshift"]
+    name: ["gimp", "xclip", "tldr", "rofi" , "vlc", "keepass2", "redshift", "flameshot"]
   tags:
     - install
     - productivity
