@@ -1,0 +1,15 @@
+# read the doc to add microsoft repos to ppa in debian
+# https://learn.microsoft.com/es-es/dotnet/core/install/linux-debian
+#
+- name: Install dotnet
+  become: true
+  apt:
+    name: [ "dotnet-sdk-6.0" ]
+  tags:
+    - install
+    - dotnet
+- name: Install Entity Framework Core
+  ansible.builtin.command: dotnet tool install --global dotnet-ef
+  tags:
+    - install
+    - dotnet
