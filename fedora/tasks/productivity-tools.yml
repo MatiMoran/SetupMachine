@@ -30,7 +30,7 @@
 - name: Install packages 2
   become: true
   dnf:
-    name: ["gimp", "xclip", "tldr", "rofi" , "vlc", "keepassxc", "redshift", "flameshot", "qbittorrent"]
+    name: ["gimp", "xclip", "tldr", "rofi" , "vlc", "keepassxc", "redshift", "flameshot", "qbittorrent", "android-file-transfer"]
   tags:
     - install
     - productivity
