@@ -1,11 +1,17 @@
 - hosts: localhost
+
   vars:
-    key_name: "id_rsa"
-    source_key: "./.ssh/{{key_name}}"
-    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/{{key_name}}"
-    alacritty_source_bin: "{{ lookup('env', 'HOME') }}/.cargo/bin/alacritty"
-    fzf_source_bin: "./software/fzf/fzf"
-    qbittorrent_source_bin: "./software/qbittorrent/qbittorrent"
+    env_home_path: "{{ lookup('env', 'HOME') }}"
+    env_software_path: "./software"
+
+    env_ssh_key_name: "id_rsa"
+    env_ssh_source_key: "./.ssh/{{env_ssh_key_name}}"
+    env_ssh_dest_key: "{{env_home_path}}/.ssh/{{env_ssh_key_name}}"
+
+    env_zsh_plugins_path: "{{env_home_path}}/.config/zsh/plugins"
+
+    env_alacritty_source_bin: "{{env_home_path}}/.cargo/bin/alacritty"
+
   pre_tasks:
   - name: Update Apt
     become: true
@@ -16,14 +22,14 @@
     tags:
       - install
       - core
+
   tasks:
     - import_tasks: tasks/ssh.yml
     - import_tasks: tasks/core-setup.yml
-    - import_tasks: tasks/dotfiles.yml
     - import_tasks: tasks/dotnet.yml
     - import_tasks: tasks/productivity-tools.yml
     - import_tasks: tasks/notifications.yml
     - import_tasks: tasks/alacritty.yml
-    - import_tasks: tasks/fzf.yml
     - import_tasks: tasks/zsh.yml
+    - import_tasks: tasks/dotfiles.yml
 #    - import_tasks: tasks/qbittorrent.yml

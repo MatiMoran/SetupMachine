@@ -1,0 +1,7 @@
+- name: Install notification packages
+  become: true
+  dnf:
+    name: [ "sox", "dunst"]
+  tags:
+    - install
+    - notifications

@@ -1,0 +1,106 @@
+# - name: kdenlive ppa (ppa:kdenlive/kdenlive-stable)
+#   become: true
+#   apt_repository:
+#    repo: ppa:kdenlive/kdenlive-stable
+#    state: present
+#    update_cache: True
+#   tags:
+#     - install
+#     - productivity
+
+# - name: shutter ppa (ppa:linuxuprising/shutter)
+#   become: true
+#   apt_repository:
+#    repo: ppa:linuxuprising/shutter
+#    state: present
+#    update_cache: True
+#   tags:
+#     - install
+#     - productivity
+
+- name: Install packages 1
+  become: true
+  apt:
+    # name: [ "wireshark", "kdenlive"]
+    name: ["tmux"]
+  tags:
+    - install
+    - productivity
+    - zsh
+
+- name: Install packages 2
+  become: true
+  apt:
+    name: ["gimp", "xclip", "tldr", "rofi" , "vlc", "keepass2", "redshift", "flameshot"]
+  tags:
+    - install
+    - productivity
+
+- name: Create local directory
+  ansible.builtin.file:
+    path: "{{ env_home_path }}/.local"
+    state: directory
+  tags:
+    - install
+    - productivity
+    - zsh
+
+- name: Create local bin directory
+  ansible.builtin.file:
+    path: "{{ env_home_path }}/.local/bin"
+    state: directory
+  tags:
+    - install
+    - productivity
+    - zsh
+
+- name: Install fzf
+  ansible.builtin.copy:
+    src: "{{ env_software_path }}/fzf/fzf"
+    dest: "{{ env_home_path }}/.local/bin"
+  tags:
+    - install
+    - productivity
+    - zsh
+
+- name: Make executable fzf
+  ansible.builtin.file:
+    path: "{{ env_home_path }}/.local/bin/fzf"
+    mode: '0755'
+  tags:
+    - install
+    - productivity
+    - zsh
+
+- name: Install bat
+  become: true
+  ansible.builtin.shell: dpkg -i {{ env_software_path }}/bat/*.deb
+  tags:
+    - install
+    - productivity
+    - zsh
+
+- name: Install fd
+  become: true
+  ansible.builtin.shell: dpkg -i {{ env_software_path }}/fd/*.deb
+  tags:
+    - install
+    - productivity
+    - zsh
+
+- name: Install ripgrep
+  become: true
+  ansible.builtin.shell: dpkg -i {{ env_software_path }}/ripgrep/*.deb
+  tags:
+    - install
+    - productivity
+    - zsh
+
+- name: Install zoxide
+  become: true
+  ansible.builtin.shell: dpkg -i {{ env_software_path }}/zoxide/*.deb
+  tags:
+    - install
+    - productivity
+    - zsh
+

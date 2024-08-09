@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-docker build . --build-arg TAGS=dotfiles -t new-computer

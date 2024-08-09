@@ -1,0 +1,9 @@
+- name: Install cascadia code nerd package
+  become: true
+  dnf:
+    name: ["cascadia-code-nf-fonts.noarch"]
+  tags:
+    - install
+    - core
+    - alacritty
+

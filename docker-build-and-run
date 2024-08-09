@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-docker image rm new-computer && docker build . --build-arg TAGS=dotfiles -t new-computer && docker run -it --rm new-computer

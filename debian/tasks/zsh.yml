@@ -1,0 +1,62 @@
+- name: Install zsh
+  apt: name=zsh
+  become: true
+  tags: 
+    - 'install'
+    - 'zsh'
+
+- name: Change shell to zsh
+  become: true
+  shell: chsh -s $(which zsh)
+  tags: 
+    - 'install'
+    - 'zsh'
+
+#- name: Check that the path exists
+#  stat:
+#    path: /home/matias/.oh-my-zsh
+#  register: oh_my_stats
+#  tags: 
+#    - 'install'
+#    - 'zsh'
+#
+#- name: Oh-My-Zsh
+#  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+#  when: oh_my_stats.stat.exists == False
+#  become_user: matias
+#  tags: 
+#    - 'install'
+#    - 'zsh'
+
+- name: Install zsh-autocompletions
+  ansible.builtin.git:
+    repo: 'https://github.com/zsh-users/zsh-completions.git'
+    dest: "{{env_zsh_plugins_path}}/zsh-completions"
+  tags: 
+    - 'install'
+    - 'zsh'
+
+- name: Install zsh-autosuggestions
+  ansible.builtin.git:
+    repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
+    dest: "{{env_zsh_plugins_path}}/zsh-autosuggestions"
+  tags: 
+    - 'install'
+    - 'zsh'
+
+- name: Install zsh-syntax-highlighting
+  ansible.builtin.git:
+    repo: 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
+    dest: "{{env_zsh_plugins_path}}/zsh-syntax-highlighting"
+  tags: 
+    - 'install'
+    - 'zsh'
+
+- name: Install fzf-tab
+  ansible.builtin.git:
+    repo: 'https://github.com/Aloxaf/fzf-tab.git'
+    dest: "{{env_zsh_plugins_path}}/fzf-tab"
+  tags: 
+    - 'install'
+    - 'zsh'
+

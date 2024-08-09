@@ -23,3 +23,4 @@ WORKDIR /home/matias/SetupMachine
 ARG TAGS
 ENV TAGS=${TAGS}
 CMD ["sh", "-c", "ansible-playbook local.yml --tags \"$TAGS\" -vvv --ask-become-pass --ask-vault-pass"]
+#RUN echo "ansible-playbook local.yml --tags \"$TAGS\" -vvv --ask-become-pass"
